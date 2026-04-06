@@ -1,0 +1,80 @@
+[
+  {
+    "name": "An Evening With KUN",
+    "date": "2026-04-05",
+    "day": "Sunday",
+    "doorsTime": "6:00 pm",
+    "showTime": "7:00 pm",
+    "description": "Cai Xukun, professionally known as KUN, is a boundary-breaking singer-songwriter, producer, and fashion icon whose influence spans music, media, and culture. Now entering a bold new chapter, KUN makes his international debut under pioneering global music company 88rising.",
+    "venue": "Castro Theatre",
+    "address": "429 Castro St, San Francisco, CA 94114",
+    "url": "https://thecastro.com/events/kun-260405",
+    "status": "Sold Out",
+    "ageRestriction": "All ages"
+  },
+  {
+    "name": "The Man Who Fell to Earth — 50th Anniversary 4K Restoration",
+    "date": "2026-04-07",
+    "day": "Tuesday",
+    "doorsTime": "6:00 pm",
+    "showTime": "7:00 pm",
+    "description": "David Bowie stars in this sci-fi classic, presented in a stunning 4K restoration for its 50th anniversary. Featuring organist David Hegarty before the screening.",
+    "venue": "Castro Theatre",
+    "address": "429 Castro St, San Francisco, CA 94114",
+    "url": "https://thecastro.com/events/the-man-who-fell-to-earth-260407",
+    "status": "On Sale",
+    "ageRestriction": "Rated R"
+  },
+  {
+    "name": "Gayme Show! with Matt Rogers and Dave Mizzoni",
+    "date": "2026-04-08",
+    "day": "Wednesday",
+    "doorsTime": "7:00 pm",
+    "showTime": "8:00 pm",
+    "description": "The hit live comedy game show comes to the Castro Theatre for an evening of laughs, surprises, and audience participation. Matt Rogers, named one of Variety's \"10 Comics to Watch,\" and Dave Mizzoni, co-creator and host of Gayme Show, bring their hilariously chaotic celebration of queer allyship.",
+    "venue": "Castro Theatre",
+    "address": "429 Castro St, San Francisco, CA 94114",
+    "url": "https://thecastro.com/events/gayme-show-260408",
+    "status": "On Sale",
+    "ageRestriction": "18+"
+  },
+  {
+    "name": "Return to Oz — 40th Anniversary in 35mm",
+    "date": "2026-04-09",
+    "day": "Thursday",
+    "doorsTime": "6:30 pm",
+    "showTime": "7:30 pm",
+    "description": "MOViES FOR MANiACS & Another Planet Entertainment present this cult classic with special guest Director Walter Murch. Curated and hosted by Jesse Hawthorne Ficks. Featuring organist David Hegarty before the screening.",
+    "venue": "Castro Theatre",
+    "address": "429 Castro St, San Francisco, CA 94114",
+    "url": "https://thecastro.com/events/movies-for-maniacs-260409",
+    "status": "On Sale",
+    "ageRestriction": "All ages"
+  },
+  {
+    "name": "Kasablanca — 360 Experience Tour",
+    "date": "2026-04-10",
+    "day": "Friday",
+    "doorsTime": "7:00 pm",
+    "showTime": "8:00 pm",
+    "description": "An immersive 360-degree concert experience from the electronic music duo Kasablanca, inside the iconic Castro Theatre.",
+    "venue": "Castro Theatre",
+    "address": "429 Castro St, San Francisco, CA 94114",
+    "url": "https://thecastro.com/events/kasablanca-260410",
+    "status": "On Sale",
+    "ageRestriction": "All ages"
+  },
+  {
+    "name": "Alyssa Edwards — CurveBall",
+    "date": "2026-04-11",
+    "day": "Saturday",
+    "doorsTime": "7:00 pm",
+    "showTime": "8:00 pm",
+    "description": "Renowned as one of the most famous drag performers in herstory, Alyssa Edwards is an American entertainer, choreographer, and globally recognized television personality. Winner of RuPaul's Drag Race Global All-Stars and the first-ever \"Queen of the Mothertucking World.\"",
+    "venue": "Castro Theatre",
+    "address": "429 Castro St, San Francisco, CA 94114",
+    "url": "https://thecastro.com/events/alyssa-edwards-260411",
+    "status": "On Sale",
+    "ageRestriction": "18+"
+  }
+]
