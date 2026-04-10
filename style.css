@@ -1,0 +1,397 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: #3a3a3a;
+}
+
+/* ── GRID ─────────────────────────────────────────────────────── */
+
+.grid {
+  display: grid;
+  width: 100vw;
+  height: 100vh;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 3px;
+}
+
+/* ── TILE BASE ────────────────────────────────────────────────── */
+
+.tile {
+  padding: clamp(12px, 1.8vw, 26px);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── KASABLANCA — hero, spans 3 cols × 2 rows ─────────────────── */
+
+.kasablanca {
+  grid-column: 1 / 4;
+  grid-row: 1 / 3;
+  background: #0e0e0e;
+  color: #f0f0f0;
+  justify-content: space-between;
+}
+
+.k-badges {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  font-size: clamp(9px, 0.65vw, 11px);
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border: 1px solid #383838;
+  color: #777;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+.k-center {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(6px, 1.2vh, 14px);
+}
+
+.k-tour {
+  font-size: clamp(0.65rem, 1vw, 1rem);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #555;
+}
+
+.k-title {
+  font-size: clamp(3rem, 7.5vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 0.92;
+  color: #ffffff;
+}
+
+.k-desc {
+  font-size: clamp(0.72rem, 1vw, 0.95rem);
+  color: #999;
+  line-height: 1.55;
+  max-width: 60ch;
+}
+
+.k-foot {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.k-time {
+  font-size: clamp(0.8rem, 1.1vw, 1.05rem);
+  font-weight: 600;
+  color: #ddd;
+  letter-spacing: 0.02em;
+}
+
+.k-detail {
+  font-size: clamp(0.6rem, 0.75vw, 0.78rem);
+  color: #4a4a4a;
+  letter-spacing: 0.04em;
+}
+
+/* ── PITCH A FRIEND — col 4 row 1 ────────────────────────────── */
+
+.pitch {
+  grid-column: 4;
+  grid-row: 1;
+  background: #1c1c1c;
+  color: #ebebeb;
+  justify-content: space-between;
+}
+
+.label {
+  font-size: clamp(8px, 0.65vw, 11px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #555;
+}
+
+.pitch-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.pitch-title {
+  font-size: clamp(1.4rem, 2.8vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+  color: #fff;
+}
+
+.pitch-sub {
+  font-size: clamp(0.62rem, 0.8vw, 0.8rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #555;
+}
+
+.pitch-desc {
+  font-size: clamp(0.6rem, 0.78vw, 0.78rem);
+  color: #888;
+  line-height: 1.45;
+  margin-top: 4px;
+}
+
+.pitch-time {
+  font-size: clamp(0.68rem, 0.9vw, 0.88rem);
+  font-weight: 600;
+  color: #ccc;
+}
+
+/* ── JACK MURNIN — col 4 row 2 ───────────────────────────────── */
+
+.jack {
+  grid-column: 4;
+  grid-row: 2;
+  background: #eaeaea;
+  color: #111;
+  justify-content: space-between;
+}
+
+.jack-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.jack-price {
+  font-size: clamp(1.1rem, 1.8vw, 1.7rem);
+  font-weight: 800;
+  color: #111;
+  letter-spacing: -0.02em;
+}
+
+.jack-tag {
+  font-size: clamp(8px, 0.6vw, 10px);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #999;
+}
+
+.jack-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+.jack-name {
+  font-size: clamp(1.3rem, 2.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #111;
+}
+
+.jack-genre {
+  font-size: clamp(0.6rem, 0.75vw, 0.78rem);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #777;
+}
+
+.jack-note {
+  font-size: clamp(0.58rem, 0.7vw, 0.72rem);
+  color: #999;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.jack-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.jack-venue {
+  font-size: clamp(0.68rem, 0.9vw, 0.88rem);
+  font-weight: 600;
+  color: #333;
+}
+
+.jack-time {
+  font-size: clamp(0.58rem, 0.72vw, 0.75rem);
+  color: #888;
+}
+
+/* ── RUPAUL — col 1–2, row 3 ─────────────────────────────────── */
+
+.rupaul {
+  grid-column: 1 / 3;
+  grid-row: 3;
+  background: #606060;
+  color: #fff;
+  justify-content: space-between;
+}
+
+.label-light {
+  font-size: clamp(8px, 0.65vw, 11px);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #aaa;
+}
+
+.rp-mid {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.rp-title {
+  font-size: clamp(1.8rem, 4.5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 0.95;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.rp-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.rp-time {
+  font-size: clamp(0.68rem, 0.9vw, 0.9rem);
+  font-weight: 600;
+  color: #eee;
+}
+
+.rp-note {
+  font-size: clamp(0.58rem, 0.72vw, 0.75rem);
+  color: #aaa;
+  font-style: italic;
+}
+
+/* ── QUEER A.F. — col 3, row 3 ───────────────────────────────── */
+
+.queeraf {
+  grid-column: 3;
+  grid-row: 3;
+  background: #f4f4f4;
+  color: #222;
+  justify-content: space-between;
+}
+
+.qa-title {
+  font-size: clamp(1rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  color: #111;
+}
+
+.qa-sub {
+  font-size: clamp(0.58rem, 0.7vw, 0.72rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #aaa;
+}
+
+.qa-desc {
+  font-size: clamp(0.6rem, 0.78vw, 0.78rem);
+  color: #777;
+  line-height: 1.45;
+  flex: 1;
+  padding-top: 6px;
+}
+
+.qa-time {
+  font-size: clamp(0.65rem, 0.85vw, 0.85rem);
+  font-weight: 600;
+  color: #444;
+}
+
+/* ── VOCAL AF — col 4, row 3 ─────────────────────────────────── */
+
+.vocalaf {
+  grid-column: 4;
+  grid-row: 3;
+  background: #cecece;
+  color: #222;
+  justify-content: space-between;
+}
+
+.va-title {
+  font-size: clamp(1rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  color: #111;
+}
+
+.va-sub {
+  font-size: clamp(0.58rem, 0.7vw, 0.72rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #888;
+}
+
+.va-desc {
+  font-size: clamp(0.6rem, 0.78vw, 0.78rem);
+  color: #666;
+  line-height: 1.45;
+  flex: 1;
+  padding-top: 6px;
+}
+
+.va-time {
+  font-size: clamp(0.65rem, 0.85vw, 0.85rem);
+  font-weight: 600;
+  color: #444;
+}
+
+/* ── MOBILE ───────────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 35fr 25fr 20fr 20fr;
+  }
+
+  /* Kasablanca: full width, row 1 */
+  .kasablanca { grid-column: 1 / 3; grid-row: 1; }
+  .k-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+  .k-desc { display: none; }
+
+  /* Pitch: left col, row 2 */
+  .pitch { grid-column: 1; grid-row: 2; }
+  .pitch-desc { display: none; }
+  .pitch-title { font-size: clamp(1.3rem, 6vw, 2rem); }
+
+  /* Jack: right col, row 2 */
+  .jack { grid-column: 2; grid-row: 2; }
+  .jack-name { font-size: clamp(1.2rem, 5.5vw, 2rem); }
+  .jack-note { display: none; }
+
+  /* RuPaul: full width, row 3 */
+  .rupaul { grid-column: 1 / 3; grid-row: 3; }
+  .rp-title { font-size: clamp(1.6rem, 7vw, 3rem); }
+
+  /* Queer AF: left col, row 4 */
+  .queeraf { grid-column: 1; grid-row: 4; }
+
+  /* Vocal AF: right col, row 4 */
+  .vocalaf { grid-column: 2; grid-row: 4; }
+}
