@@ -1,614 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Castro Live — What's Happening This Week</title>
-  <meta name="description" content="Your guide to everything happening in San Francisco's Castro neighborhood, April 6–12, 2026." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Castro · Tonight</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; overflow: hidden; }
+    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: #3a3a3a; }
+    .grid {
+      display: grid;
+      width: 100vw;
+      height: 100vh;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 3px;
+    }
+    .tile { padding: clamp(12px, 1.8vw, 26px); overflow: hidden; display: flex; flex-direction: column; text-decoration: none; cursor: pointer; }
+    .tile:hover { filter: brightness(1.12); }
+    .kasablanca { grid-column: 1 / 4; grid-row: 1 / 3; background: #0e0e0e; color: #f0f0f0; justify-content: space-between; }
+    .badge { font-size: clamp(9px, 0.65vw, 11px); letter-spacing: 0.13em; text-transform: uppercase; padding: 4px 10px; border: 1px solid #383838; color: #777; border-radius: 2px; white-space: nowrap; }
+    .k-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .k-center { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: clamp(6px, 1.2vh, 14px); }
+    .k-tour { font-size: clamp(0.65rem, 1vw, 1rem); text-transform: uppercase; letter-spacing: 0.18em; color: #555; }
+    .k-title { font-size: clamp(3rem, 7.5vw, 8rem); font-weight: 800; letter-spacing: -0.025em; line-height: 0.92; color: #fff; }
+    .k-desc { font-size: clamp(0.72rem, 1vw, 0.95rem); color: #999; line-height: 1.55; max-width: 60ch; }
+    .k-foot { display: flex; flex-direction: column; gap: 4px; }
+    .k-time { font-size: clamp(0.8rem, 1.1vw, 1.05rem); font-weight: 600; color: #ddd; }
+    .k-detail { font-size: clamp(0.6rem, 0.75vw, 0.78rem); color: #4a4a4a; }
+    .pitch { grid-column: 4; grid-row: 1; background: #1c1c1c; color: #ebebeb; justify-content: space-between; }
+    .label { font-size: clamp(8px, 0.65vw, 11px); text-transform: uppercase; letter-spacing: 0.1em; color: #555; }
+    .pitch-mid { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+    .pitch-title { font-size: clamp(1.4rem, 2.8vw, 2.6rem); font-weight: 800; line-height: 1; color: #fff; }
+    .pitch-sub { font-size: clamp(0.62rem, 0.8vw, 0.8rem); text-transform: uppercase; letter-spacing: 0.12em; color: #555; }
+    .pitch-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #888; line-height: 1.45; margin-top: 4px; }
+    .pitch-time { font-size: clamp(0.68rem, 0.9vw, 0.88rem); font-weight: 600; color: #ccc; }
+    .jack { grid-column: 4; grid-row: 2; background: #eaeaea; color: #111; justify-content: space-between; }
+    .jack-top { display: flex; justify-content: space-between; align-items: baseline; }
+    .jack-price { font-size: clamp(1.1rem, 1.8vw, 1.7rem); font-weight: 800; color: #111; }
+    .jack-tag { font-size: clamp(8px, 0.6vw, 10px); text-transform: uppercase; letter-spacing: 0.12em; color: #999; }
+    .jack-mid { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+    .jack-name { font-size: clamp(1.3rem, 2.5vw, 2.4rem); font-weight: 700; line-height: 1; color: #111; }
+    .jack-genre { font-size: clamp(0.6rem, 0.75vw, 0.78rem); text-transform: uppercase; letter-spacing: 0.1em; color: #777; }
+    .jack-note { font-size: clamp(0.58rem, 0.7vw, 0.72rem); color: #999; font-style: italic; margin-top: 2px; }
+    .jack-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+    .jack-venue { font-size: clamp(0.68rem, 0.9vw, 0.88rem); font-weight: 600; color: #333; }
+    .jack-time { font-size: clamp(0.58rem, 0.72vw, 0.75rem); color: #888; }
+    .rupaul { grid-column: 1 / 3; grid-row: 3; background: #606060; color: #fff; justify-content: space-between; }
+    .label-light { font-size: clamp(8px, 0.65vw, 11px); text-transform: uppercase; letter-spacing: 0.1em; color: #aaa; }
+    .rp-mid { flex: 1; display: flex; align-items: center; }
+    .rp-title { font-size: clamp(1.8rem, 4.5vw, 4.5rem); font-weight: 800; line-height: 0.95; color: #fff; letter-spacing: -0.02em; }
+    .rp-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+    .rp-time { font-size: clamp(0.68rem, 0.9vw, 0.9rem); font-weight: 600; color: #eee; }
+    .rp-note { font-size: clamp(0.58rem, 0.72vw, 0.75rem); color: #aaa; font-style: italic; }
+    .queeraf { grid-column: 3; grid-row: 3; background: #f4f4f4; color: #222; justify-content: space-between; }
+    .qa-title { font-size: clamp(1rem, 1.8vw, 1.7rem); font-weight: 700; color: #111; }
+    .qa-sub { font-size: clamp(0.58rem, 0.7vw, 0.72rem); text-transform: uppercase; letter-spacing: 0.12em; color: #aaa; }
+    .qa-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #777; line-height: 1.45; flex: 1; padding-top: 6px; }
+    .qa-time { font-size: clamp(0.65rem, 0.85vw, 0.85rem); font-weight: 600; color: #444; }
+    .vocalaf { grid-column: 4; grid-row: 3; background: #cecece; color: #222; justify-content: space-between; }
+    .va-title { font-size: clamp(1rem, 1.8vw, 1.7rem); font-weight: 700; color: #111; }
+    .va-sub { font-size: clamp(0.58rem, 0.7vw, 0.72rem); text-transform: uppercase; letter-spacing: 0.12em; color: #888; }
+    .va-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #666; line-height: 1.45; flex: 1; padding-top: 6px; }
+    .va-time { font-size: clamp(0.65rem, 0.85vw, 0.85rem); font-weight: 600; color: #444; }
+    @media (max-width: 768px) {
+      .grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 35fr 25fr 20fr 20fr; }
+      .kasablanca { grid-column: 1 / 3; grid-row: 1; }
+      .k-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
+      .k-desc { display: none; }
+      .pitch { grid-column: 1; grid-row: 2; }
+      .pitch-desc { display: none; }
+      .pitch-title { font-size: clamp(1.3rem, 6vw, 2rem); }
+      .jack { grid-column: 2; grid-row: 2; }
+      .jack-name { font-size: clamp(1.2rem, 5.5vw, 2rem); }
+      .jack-note { display: none; }
+      .rupaul { grid-column: 1 / 3; grid-row: 3; }
+      .rp-title { font-size: clamp(1.6rem, 7vw, 3rem); }
+      .queeraf { grid-column: 1; grid-row: 4; }
+      .vocalaf { grid-column: 2; grid-row: 4; }
+    }
+  </style>
 </head>
 <body>
+  <div class="grid">
 
-  <!-- ===================== HERO ===================== -->
-  <header class="hero">
-    <div class="rainbow-bar">
-      <span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
-    <h1><span class="accent">Castro Live</span></h1>
-    <p class="subtitle">Your weekly guide to the Castro neighborhood, San Francisco</p>
-    <span class="date-range">April 6 &ndash; 12, 2026</span>
-  </header>
-
-  <!-- =============== STICKY DAY NAV =============== -->
-  <nav class="day-nav" aria-label="Jump to day">
-    <div class="container">
-      <a href="#monday" class="today"><span class="day-name">Mon</span> Apr 6</a>
-      <a href="#tuesday"><span class="day-name">Tue</span> Apr 7</a>
-      <a href="#wednesday"><span class="day-name">Wed</span> Apr 8</a>
-      <a href="#thursday"><span class="day-name">Thu</span> Apr 9</a>
-      <a href="#friday"><span class="day-name">Fri</span> Apr 10</a>
-      <a href="#saturday"><span class="day-name">Sat</span> Apr 11</a>
-      <a href="#sunday"><span class="day-name">Sun</span> Apr 12</a>
-    </div>
-  </nav>
-
-  <main class="container">
-
-    <!-- ======================== MONDAY APR 6 ======================== -->
-    <section class="day-section" id="monday">
-      <div class="day-header">
-        <h2>Monday</h2>
-        <span class="day-date">April 6</span>
+    <!-- HERO: Kasablanca — largest tile, most prominent event -->
+    <a class="tile kasablanca" href="https://www.ticketmaster.com/kasablanca-360-experience-tour-san-francisco-california-04-10-2026/event/1C006434DFA2E1EC" target="_blank" rel="noopener">
+      <div class="k-badges">
+        <span class="badge">Castro Theatre</span>
+        <span class="badge">All Ages</span>
+        <span class="badge">429 Castro St</span>
       </div>
-      <div class="events-grid">
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">12:00 PM</span>
-            <span class="badge sports">Sports</span>
-          </div>
-          <h3>NCAA Championship Watch Party</h3>
-          <p class="venue"><a href="https://lu.ma/e4wr6zef">Rikki's Women's Sports Bar</a> &mdash; at Teeth Bar, 2323 Mission St</p>
-          <p class="desc">Join Rikki's to watch the NCAA Championship game. Merch, food, all ages, and excellent vibes.</p>
-          <div class="card-footer">
-            <a href="https://lu.ma/e4wr6zef" class="btn">RSVP</a>
-            <span class="detail">Tip-off 12 PM</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">Evening</span>
-            <span class="badge nightlife">Drag</span>
-          </div>
-          <h3>Mister Sister Mondays &mdash; Drag Show</h3>
-          <p class="venue"><a href="https://www.midnightsunsf.com/">Midnight Sun</a> &mdash; 4067 18th St</p>
-          <p class="desc">Weekly Monday drag show at the Castro's iconic video bar. Plus 2-for-1 happy hour drink specials until 9 PM.</p>
-          <div class="card-footer">
-            <span class="detail">Open 2 PM &ndash; 12 AM</span>
-          </div>
-        </article>
-
+      <div class="k-center">
+        <p class="k-tour">360 Experience Tour</p>
+        <h1 class="k-title">Kasablanca</h1>
+        <p class="k-desc">Toronto-based melodic techno duo performs their immersive "360 Concert Experience in Higher Resolution" — the audience surrounds their analog station for a retro-futuristic show. Support from Joel Demoor.</p>
       </div>
-    </section>
-
-    <!-- ======================== TUESDAY APR 7 ======================== -->
-    <section class="day-section" id="tuesday">
-      <div class="day-header">
-        <h2>Tuesday</h2>
-        <span class="day-date">April 7</span>
+      <div class="k-foot">
+        <span class="k-time">7:00 – 10:00 PM</span>
+        <span class="k-detail">Doors 7 PM &nbsp;·&nbsp; Show 8 PM &nbsp;·&nbsp; Tickets via Ticketmaster</span>
       </div>
-      <div class="events-grid">
+    </a>
 
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:30 PM</span>
-            <span class="badge film">Film</span>
-          </div>
-          <h3>The Man Who Fell To Earth &mdash; 50th Anniversary 4K Restoration</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">David Bowie stars in this sci-fi classic, presented in a stunning 4K restoration for its 50th anniversary. Featuring organist David Hegarty before the screening.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:30 PM</span>
-            <span class="badge film">Film</span>
-          </div>
-          <h3>Movie Night: Mean Girls, The Musical!</h3>
-          <p class="venue"><a href="https://www.academy-sf.com/opentoall">The Academy SF</a> &mdash; 2166 Market St</p>
-          <p class="desc">Grab your seat for a fun movie night screening of the musical adaptation of everyone's favorite high school comedy.</p>
-          <div class="card-footer">
-            <a href="https://www.academy-sf.com/opentoall" class="btn">Get Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">Free Play</span>
-            <span class="badge free">Free</span>
-            <span class="badge community">Community</span>
-          </div>
-          <h3>Free Arcade Game Night at The Detour</h3>
-          <p class="venue">The Detour &mdash; 2348 Market St</p>
-          <p class="desc">First Tuesday of the month: all arcade games on free play with purchase from the bar. Retro and modern video game glory.</p>
-          <div class="card-footer">
-            <span class="detail">First Tuesdays &bull; With bar purchase</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">6:00 PM</span>
-            <span class="badge history">History</span>
-            <span class="badge free">Free</span>
-          </div>
-          <h3>History Talk: &ldquo;Remnants of San Francisco&rdquo; with Chris Pollock</h3>
-          <p class="venue">Eureka Valley / Harvey Milk Memorial Branch Library &mdash; 1 Jose Sarria Ct</p>
-          <p class="desc">SF Recreation and Park Department Historian in Residence Christopher Pollock explores the city's past through its remnants and hidden stories.</p>
-          <div class="card-footer">
-            <span class="detail">Free admission</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">9:00 PM</span>
-            <span class="badge nightlife">Nightlife</span>
-          </div>
-          <h3>&ldquo;Stripped&rdquo; Tuesdays</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/events">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Weekly Tuesday night party at Beaux in the Castro. Dance music, go-go dancers, and drink specials all night.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/events" class="btn">Details</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
+    <!-- Pitch A Friend — second-most featured, unique social event -->
+    <a class="tile pitch" href="https://www.academy-sf.com/event-details/pitch-a-friend-singles-night" target="_blank" rel="noopener">
+      <div class="pitch-top">
+        <span class="label">The Academy SF &nbsp;·&nbsp; 2166 Market St</span>
       </div>
-    </section>
-
-    <!-- ======================== WEDNESDAY APR 8 ======================== -->
-    <section class="day-section" id="wednesday">
-      <div class="day-header">
-        <h2>Wednesday</h2>
-        <span class="day-date">April 8</span>
+      <div class="pitch-mid">
+        <h2 class="pitch-title">Pitch A<br>Friend</h2>
+        <p class="pitch-sub">Singles Night</p>
+        <p class="pitch-desc">Friends give creative presentations pitching amazing singles to the crowd — part speed dating, part roast, surprisingly wholesome. Mingling and games follow in a moody speakeasy setting. Spots are limited.</p>
       </div>
-      <div class="events-grid">
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">3:00 &ndash; 7:00 PM</span>
-            <span class="badge food">Market</span>
-          </div>
-          <h3>Castro Farmers' Market</h3>
-          <p class="venue"><a href="https://www.pcfma.org/castro">PCFMA</a> &mdash; 270 Noe St</p>
-          <p class="desc">Fresh produce, baked goods, honey, eggs, empanadas, tamales, seafood, and more from local farms and food makers. Every Wednesday through November.</p>
-          <div class="card-footer">
-            <a href="https://www.pcfma.org/castro" class="btn">Vendor List</a>
-            <span class="detail">Weekly &bull; Apr&ndash;Nov</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:30 PM</span>
-            <span class="badge comedy">Comedy</span>
-          </div>
-          <h3>Gayme Show! with Matt Rogers &amp; Dave Mizzoni</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">The hit live comedy game show comes to the Castro Theatre for an evening of laughs, surprises, and audience participation.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">9:00 PM</span>
-            <span class="badge nightlife">Nightlife</span>
-          </div>
-          <h3>Pan Dulce &mdash; Latin Hump Day Fiesta</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/pandulce">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Club Papi Productions presents the Bay Area's favorite Latin party. Reggaeton, cumbia, dance, and hip hop with resident DJs, go-go dancers, and drag divas. Free before 10 PM.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/pandulce" class="btn">Details</a>
-            <span class="detail">21+ &bull; Free before 10 PM</span>
-          </div>
-        </article>
-
+      <div class="pitch-foot">
+        <span class="pitch-time">6:00 – 9:00 PM</span>
       </div>
-    </section>
+    </a>
 
-    <!-- ======================== THURSDAY APR 9 ======================== -->
-    <section class="day-section" id="thursday">
-      <div class="day-header">
-        <h2>Thursday</h2>
-        <span class="day-date">April 9</span>
+    <!-- Jack Murnin — ticketed show, first headline tour -->
+    <a class="tile jack" href="https://www.ticketweb.com/event/jack-murnin-cafe-du-nord-tickets/14808403" target="_blank" rel="noopener">
+      <div class="jack-top">
+        <span class="jack-price">$22.75</span>
+        <span class="jack-tag">All Ages</span>
       </div>
-      <div class="events-grid">
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">6:00 &ndash; 8:00 PM</span>
-            <span class="badge history">History</span>
-          </div>
-          <h3>The Castro: The Story of SF's Best-Known LGBTQ+ Neighborhood</h3>
-          <p class="venue"><a href="https://www.glbthistory.org/events-1">GLBT Historical Society Museum</a> &mdash; 4127 18th St</p>
-          <p class="desc">Authors Jen Reck and Gerard Koskovich present their new booklet tracing the evolution of the Castro from a sleepy residential neighborhood to a center of LGBTQ+ activism. Joined by Tina V. Aguirre and Devin McGeehan Muchmore. Copies available for signing.</p>
-          <div class="card-footer">
-            <a href="https://www.glbthistory.org/events-1" class="btn">Reserve Tickets</a>
-            <span class="detail">$10 &bull; Free for members</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">6:00 &ndash; 9:00 PM</span>
-            <span class="badge community">Forum</span>
-          </div>
-          <h3>Academy Forum &mdash; Scott Wiener, Candidate for U.S. House District 11</h3>
-          <p class="venue"><a href="https://www.academy-sf.com/opentoall">The Academy SF</a> &mdash; 2166 Market St</p>
-          <p class="desc">An evening with Scott Wiener as he discusses his campaign for U.S. House District 11 in the 2026 election.</p>
-          <div class="card-footer">
-            <a href="https://www.academy-sf.com/opentoall" class="btn">Get Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:30 PM</span>
-            <span class="badge film">Film</span>
-          </div>
-          <h3>Return to Oz &mdash; 40th Anniversary in 35mm</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">MOViES FOR MANiACS presents this cult classic with special guest Director Walter Murch. Curated and hosted by Jesse Hawthorne Ficks. Featuring organist David Hegarty.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">8:00 PM</span>
-            <span class="badge music">Music</span>
-          </div>
-          <h3>EMELINE with Madelline &amp; Reverse Pathogen</h3>
-          <p class="venue"><a href="https://cafedunord.com/">Cafe Du Nord</a> &mdash; 2174 Market St</p>
-          <p class="desc">Live Nation presents EMELINE performing at this intimate below-street-level music venue, with supporting acts Madelline and Reverse Pathogen.</p>
-          <div class="card-footer">
-            <a href="https://cafedunord.com/" class="btn">Buy Tickets</a>
-            <span class="detail">All Ages</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">9:00 PM</span>
-            <span class="badge nightlife">Nightlife</span>
-          </div>
-          <h3>&ldquo;Queer Pop&rdquo; Thursdays</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/events">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Weekly Thursday night dance party at Beaux playing the best queer pop, dance, and party anthems.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/events" class="btn">Details</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
+      <div class="jack-mid">
+        <h2 class="jack-name">Jack Murnin</h2>
+        <p class="jack-genre">R&amp;B &nbsp;·&nbsp; Pop &nbsp;·&nbsp; Indie</p>
+        <p class="jack-note">First-ever U.S. headline run</p>
       </div>
-    </section>
-
-    <!-- ======================== FRIDAY APR 10 ======================== -->
-    <section class="day-section" id="friday">
-      <div class="day-header">
-        <h2>Friday</h2>
-        <span class="day-date">April 10</span>
+      <div class="jack-foot">
+        <span class="jack-venue">Cafe du Nord</span>
+        <span class="jack-time">8:45 – 10:45 PM</span>
       </div>
-      <div class="events-grid">
+    </a>
 
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">8:00 PM</span>
-            <span class="badge music">Music</span>
-          </div>
-          <h3>Kasablanca &mdash; 360 Experience Tour</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">An immersive 360-degree concert experience from the electronic music duo Kasablanca, inside the iconic Castro Theatre.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:00 &ndash; 10:00 PM</span>
-            <span class="badge singles">Singles</span>
-          </div>
-          <h3>Pitch A Friend Singles Night</h3>
-          <p class="venue"><a href="https://www.academy-sf.com/opentoall">The Academy SF</a> &mdash; 2166 Market St</p>
-          <p class="desc">Bring a single friend and pitch them to the room! A fun, low-pressure way to meet new people in the Castro.</p>
-          <div class="card-footer">
-            <a href="https://www.academy-sf.com/opentoall" class="btn">RSVP</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">8:45 PM</span>
-            <span class="badge music">Music</span>
-          </div>
-          <h3>Jack Murnin</h3>
-          <p class="venue"><a href="https://cafedunord.com/">Cafe Du Nord</a> &mdash; 2174 Market St</p>
-          <p class="desc">Cafe Du Nord presents a live performance from Jack Murnin at this historic below-street-level music venue.</p>
-          <div class="card-footer">
-            <a href="https://cafedunord.com/" class="btn">Buy Tickets</a>
-            <span class="detail">All Ages</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">9:00 PM</span>
-            <span class="badge nightlife">Nightlife</span>
-          </div>
-          <h3>&ldquo;Manimal&rdquo; Fridays</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/events">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Weekly Friday night dance party at Beaux with DJs, go-go dancers, and the best vibes in the Castro.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/events" class="btn">Details</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">2:00 PM</span>
-            <span class="badge nightlife">Bar</span>
-          </div>
-          <h3>GoGo Dancers &amp; Happy Hour</h3>
-          <p class="venue"><a href="https://www.midnightsunsf.com/">Midnight Sun</a> &mdash; 4067 18th St</p>
-          <p class="desc">Friday night GoGo dancers plus 2-for-1 happy hour specials until 9 PM at the Castro's iconic video bar.</p>
-          <div class="card-footer">
-            <span class="detail">Open 2 PM &ndash; 2 AM</span>
-          </div>
-        </article>
-
+    <!-- RuPaul's Drag Race — popular weekly community event -->
+    <a class="tile rupaul" href="https://www.eventbrite.com/e/rupauls-drag-race-viewing-party-at-beaux-in-the-castro-tickets-1980048185424" target="_blank" rel="noopener">
+      <div class="rp-top">
+        <span class="label-light">Viewing Party &nbsp;·&nbsp; Beaux &nbsp;·&nbsp; 2344 Market St</span>
       </div>
-    </section>
-
-    <!-- ======================== SATURDAY APR 11 ======================== -->
-    <section class="day-section" id="saturday">
-      <div class="day-header">
-        <h2>Saturday</h2>
-        <span class="day-date">April 11</span>
+      <div class="rp-mid">
+        <h2 class="rp-title">RuPaul's<br>Drag Race</h2>
       </div>
-      <div class="events-grid">
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:00 PM</span>
-            <span class="badge comedy">Comedy / Drag</span>
-          </div>
-          <h3>Alyssa Edwards &mdash; CurveBall</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">RuPaul's Drag Race legend Alyssa Edwards brings her CurveBall show to the Castro Theatre stage for a night of comedy, dance, and drag excellence.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">8:00 PM</span>
-            <span class="badge nightlife">Drag / Dance</span>
-          </div>
-          <h3>Laganja Estranja &mdash; Big Top Saturday</h3>
-          <p class="venue"><a href="https://www.eventbrite.com/e/laganja-estranja-big-top-saturday-at-beaux-in-castro-saturday-april-11th-tickets-1984925849649">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">RuPaul's Drag Race legend Laganja Estranja headlines the unofficial Alyssa Edwards after-party. Drag show hosted by Hera Wynn with Mudd the Two Spirit, Tala, and Kendoll. GoGo boys, video DJs, and dancing all night.</p>
-          <div class="card-footer">
-            <a href="https://www.eventbrite.com/e/laganja-estranja-big-top-saturday-at-beaux-in-castro-saturday-april-11th-tickets-1984925849649" class="btn">Get Tickets</a>
-            <span class="detail">21+ &bull; 8 PM &ndash; 2 AM</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">12:30 PM &amp; 2:30 PM</span>
-            <span class="badge nightlife">Drag</span>
-          </div>
-          <h3>Babes Who Brunch &mdash; Drag Brunch</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/events">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Weekend drag brunch with top Bay Area performers, champagne, mimosas, and Taco Boys brunch. Two seatings.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/reservations-2" class="btn">Reserve</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:00 PM</span>
-            <span class="badge music">Music</span>
-          </div>
-          <h3>Caroline Jones with Alyssa Bonagura</h3>
-          <p class="venue"><a href="https://cafedunord.com/">Cafe Du Nord</a> &mdash; 2174 Market St</p>
-          <p class="desc">Live Nation presents singer-songwriter Caroline Jones with support from Alyssa Bonagura at the intimate Cafe Du Nord.</p>
-          <div class="card-footer">
-            <a href="https://cafedunord.com/" class="btn">Buy Tickets</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">9:30 PM</span>
-            <span class="badge music">Music</span>
-          </div>
-          <h3>Lil Mo Mozzarella</h3>
-          <p class="venue"><a href="https://cafedunord.com/">Swedish American Hall</a> &mdash; 2174 Market St</p>
-          <p class="desc">Late-night show at the Swedish American Hall above Cafe Du Nord.</p>
-          <div class="card-footer">
-            <a href="https://cafedunord.com/" class="btn">Buy Tickets</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">7:00 PM</span>
-            <span class="badge comedy">Comedy</span>
-          </div>
-          <h3>Castro Comedy Cabaret</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/events">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Queer variety show on the 2nd Saturday of every month. Stand-up, comical drag, burlesque, and musical performances hosted by Jonah &amp; Wonder Dave.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/events" class="btn">Tickets</a>
-            <span class="detail">Pay What You Can &amp; VIP</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">12:30 PM</span>
-            <span class="badge nightlife">Bar</span>
-          </div>
-          <h3>GoGo Dancers &amp; Happy Hour</h3>
-          <p class="venue"><a href="https://www.midnightsunsf.com/">Midnight Sun</a> &mdash; 4067 18th St</p>
-          <p class="desc">Saturday night GoGo dancers plus 2-for-1 happy hour specials until 9 PM at the Castro's iconic video bar.</p>
-          <div class="card-footer">
-            <span class="detail">Open 12:30 PM &ndash; 2 AM</span>
-          </div>
-        </article>
-
+      <div class="rp-foot">
+        <span class="rp-time">6:00 – 9:00 PM</span>
+        <span class="rp-note">Castro staple</span>
       </div>
-    </section>
+    </a>
 
-    <!-- ======================== SUNDAY APR 12 ======================== -->
-    <section class="day-section" id="sunday">
-      <div class="day-header">
-        <h2>Sunday</h2>
-        <span class="day-date">April 12</span>
-      </div>
-      <div class="events-grid">
+    <!-- Queer A.F. Open — free drop-in community space -->
+    <a class="tile queeraf" href="https://queer-af.com" target="_blank" rel="noopener">
+      <h3 class="qa-title">Queer A.F.</h3>
+      <p class="qa-sub">Community Space</p>
+      <p class="qa-desc">Free drop-in at their Castro location. An open, welcoming space for the LGBTQ+ community.</p>
+      <span class="qa-time">12:00 – 7:00 PM</span>
+    </a>
 
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">1:00 PM</span>
-            <span class="badge film">Film</span>
-          </div>
-          <h3>The Princess Bride &mdash; Celebrating the Legacy of Rob Reiner</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">The beloved fairy-tale adventure on the big screen, introduced by organist David Hegarty. A tribute to the iconic director Rob Reiner.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
+    <!-- Vocal AF — community open mic, also hosted by Queer A.F. -->
+    <a class="tile vocalaf" href="https://queer-af.com" target="_blank" rel="noopener">
+      <h3 class="va-title">Vocal AF</h3>
+      <p class="va-sub">Open Mic Night</p>
+      <p class="va-desc">Celebrating diverse voices in the Castro. Hosted by Queer A.F.</p>
+      <span class="va-time">7:00 – 10:00 PM</span>
+    </a>
 
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">Evening</span>
-            <span class="badge film">Film</span>
-          </div>
-          <h3>The Last Black Man in San Francisco &mdash; with Director Joe Talbot</h3>
-          <p class="venue"><a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &mdash; 429 Castro St</p>
-          <p class="desc">A deeply personal San Francisco story, screened with a special in-person appearance by writer/director Joe Talbot. Featuring organist David Hegarty.</p>
-          <div class="card-footer">
-            <a href="https://thecastro.com/#upcoming-shows" class="btn">Buy Tickets</a>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">12:30 PM &amp; 2:30 PM</span>
-            <span class="badge nightlife">Drag</span>
-          </div>
-          <h3>Babes Who Brunch &mdash; Drag Brunch</h3>
-          <p class="venue"><a href="https://www.beauxsf.com/events">Beaux</a> &mdash; 2344 Market St</p>
-          <p class="desc">Weekend drag brunch with top Bay Area performers, champagne, mimosas, and Taco Boys brunch. Two seatings.</p>
-          <div class="card-footer">
-            <a href="https://www.beauxsf.com/reservations-2" class="btn">Reserve</a>
-            <span class="detail">21+</span>
-          </div>
-        </article>
-
-        <article class="event-card">
-          <div class="card-top">
-            <span class="time">8:00 PM</span>
-            <span class="badge music">Music</span>
-          </div>
-          <h3>Kyle Hume with Jude Barclay</h3>
-          <p class="venue"><a href="https://cafedunord.com/">Cafe Du Nord</a> &mdash; 2174 Market St</p>
-          <p class="desc">Live Nation presents Kyle Hume with support from Jude Barclay at the intimate Cafe Du Nord.</p>
-          <div class="card-footer">
-            <a href="https://cafedunord.com/" class="btn">Buy Tickets</a>
-            <span class="detail">All Ages</span>
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ======================== WEEKLY RECURRING ======================== -->
-    <section class="recurring-section">
-      <h2>Recurring Weekly Happenings</h2>
-      <div class="recurring-grid">
-
-        <div class="recurring-card">
-          <h3>Castro Farmers' Market</h3>
-          <p class="schedule">Every Wednesday &bull; 3&ndash;7 PM</p>
-          <p class="venue"><a href="https://www.pcfma.org/castro">270 Noe St</a></p>
-          <p class="desc">Local produce, baked goods, honey, eggs, empanadas, tamales, and more. April through November.</p>
-        </div>
-
-        <div class="recurring-card">
-          <h3>Pan Dulce Wednesdays</h3>
-          <p class="schedule">Every Wednesday &bull; 9 PM</p>
-          <p class="venue"><a href="https://www.beauxsf.com/pandulce">Beaux, 2344 Market St</a></p>
-          <p class="desc">Latin hump day fiesta with DJs, go-go dancers, and drag. Free before 10 PM.</p>
-        </div>
-
-        <div class="recurring-card">
-          <h3>Drag Brunch</h3>
-          <p class="schedule">Every Sat &amp; Sun &bull; 12:30 &amp; 2:30 PM</p>
-          <p class="venue"><a href="https://www.beauxsf.com/reservations-2">Beaux, 2344 Market St</a></p>
-          <p class="desc">Drag performances, champagne, mimosas, and taqueria brunch by Taco Boys.</p>
-        </div>
-
-        <div class="recurring-card">
-          <h3>Midnight Sun Happy Hour</h3>
-          <p class="schedule">Daily &bull; 2-for-1 until 9 PM</p>
-          <p class="venue"><a href="https://www.midnightsunsf.com/">4067 18th St</a></p>
-          <p class="desc">The Castro's iconic video bar since 1971. GoGo dancers Friday &amp; Saturday nights. Mister Sister drag show Mondays.</p>
-        </div>
-
-        <div class="recurring-card">
-          <h3>Rikki's Women's Sports Bar</h3>
-          <p class="schedule">Tue&ndash;Sun</p>
-          <p class="venue"><a href="https://www.rikkisbarsf.com/events">2223 Market St</a></p>
-          <p class="desc">SF's women's sports bar with watch parties and community events. Check their calendar for weekly game screenings.</p>
-        </div>
-
-        <div class="recurring-card">
-          <h3>GLBT Historical Society Museum</h3>
-          <p class="schedule">Thu&ndash;Sun &bull; 11 AM&ndash;5 PM</p>
-          <p class="venue"><a href="https://www.glbthistory.org/events-1">4127 18th St</a></p>
-          <p class="desc">The nation's first full-scale LGBTQ+ history museum, celebrating 100 years of San Francisco's queer past.</p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-  <!-- ======================== FOOTER ======================== -->
-  <footer class="site-footer">
-    <p>Castro Live &mdash; Curated for the week of April 6&ndash;12, 2026</p>
-    <div class="sources">
-      Sources:
-      <a href="https://sf.funcheap.com/region/castro/">Funcheap</a> &bull;
-      <a href="https://castromerchants.com/events">Castro Merchants</a> &bull;
-      <a href="https://www.glbthistory.org/events-1">GLBT Historical Society</a> &bull;
-      <a href="https://anc.apm.activecommunities.com/sfrecpark/activity/search?activity_select_param=2&amp;site_ids=48&amp;viewMode=list">SF Rec &amp; Park</a> &bull;
-      <a href="https://www.eventbrite.com/o/midnight-sun-48958324993">Midnight Sun</a> &bull;
-      <a href="https://www.eventbrite.com/o/beaux-in-castro-58556867733">Beaux</a> &bull;
-      <a href="https://knkcontemporary.com/event-page">KnK Contemporary</a> &bull;
-      <a href="https://thecastro.com/#upcoming-shows">Castro Theatre</a> &bull;
-      <a href="https://www.therhino.org/season-subscription">Theatre Rhinoceros</a> &bull;
-      <a href="https://www.thelovepotionlibrary.com/#events">Love Potion Library</a> &bull;
-      <a href="https://www.pcfma.org/castro">PCFMA</a> &bull;
-      <a href="https://luma.com/rikkisbarsf">Rikki's</a> &bull;
-      <a href="https://cafedunord.com/">Cafe Du Nord</a> &bull;
-      <a href="https://www.academy-sf.com/opentoall">The Academy SF</a> &bull;
-      <a href="https://www.eventbrite.com/e/the-cafe-presents-electric-playground-fridays-w-dj-adamusic-424-9pm-2am-tickets-1986489322037">The Caf&eacute;</a>
-    </div>
-  </footer>
-
+  </div>
 </body>
 </html>
