@@ -1,0 +1,191 @@
+# Castro Live — Calendar Sources
+# Each entry is a web source used to discover events for the Castro district.
+
+sources:
+
+  # ── Aggregators ──────────────────────────────────────────────────
+
+  - name: FunCheap SF — Castro
+    url: https://sf.funcheap.com/region/castro/
+    category: aggregator
+    source_type: event_listing
+    address: ~
+    neighborhood: Castro
+    notes: >
+      Regional events aggregator covering free and cheap activities
+      across San Francisco. Castro filter surfaces neighborhood-specific
+      music, art, comedy, festivals, and food events.
+
+  - name: Castro Merchants Association
+    url: https://castromerchants.com/events
+    category: community_org
+    source_type: event_listing
+    address: 258 Noe Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Business association for the Castro district. Hosts monthly art
+      walks, night markets, wine walks, block parties, and seasonal
+      celebrations supporting LGBTQ+ culture and local merchants.
+
+  - name: Castro Community Calendar
+    url: https://calendar.google.com/calendar/u/0/embed?ctz=America/Los_Angeles&src=e5f720e1308c9eccb1a4cab1bdd537d2dec9a3e879a5e9a79e1d41e75fd3e785@group.calendar.google.com
+    category: aggregator
+    source_type: google_calendar_embed
+    address: ~
+    neighborhood: Castro
+    notes: >
+      Shared Google Calendar embed aggregating Castro-area events.
+      Structured iCal data — useful for automated parsing.
+
+  # ── Venues — Music & Performance ─────────────────────────────────
+
+  - name: Castro Theatre
+    url: https://thecastro.com/#upcoming-shows
+    category: venue
+    source_type: event_listing
+    address: 429 Castro Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Iconic 1922 movie palace designed by Timothy Pfleuger. Underwent
+      $41M renovation. Hosts films, concerts, comedy, and cultural
+      events. LGBTQ+ cultural epicenter.
+
+  - name: Cafe du Nord
+    url: https://cafedunord.com/
+    category: venue
+    source_type: event_listing
+    address: 2174 Market Street, San Francisco, CA 94114
+    neighborhood: Castro / Duboce Triangle
+    notes: >
+      Live music venue hosting touring and local artists. All-ages and
+      21+ shows. Also operates Swedish American Hall at the same
+      address. Partners with Live Nation and independent promoters.
+
+  - name: The Academy SF
+    url: https://www.academy-sf.com/opentoall
+    category: venue
+    source_type: event_listing
+    address: 2166 Market Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      LGBTQ+ social club with membership model. "Open To All" page
+      lists events accessible to non-members. Also runs a barber
+      salon, daytime club, and private event space.
+
+  - name: Theatre Rhinoceros
+    url: https://www.therhino.org/season-subscription
+    category: arts_theater
+    source_type: season_listing
+    address: 4229 18th Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      America's longest-running queer theater. Mainstage productions
+      of classic and new LGBTQ+ work. Season subscription page lists
+      upcoming shows.
+
+  # ── Venues — Bars & Nightlife ────────────────────────────────────
+
+  - name: Beaux
+    url: https://www.eventbrite.com/o/beaux-in-castro-58556867733
+    category: bar_nightclub
+    source_type: eventbrite_organizer
+    address: 2344 Market Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Premier LGBTQIA+ bar and dance club. Daytime craft cocktails,
+      evening dance parties, and regular drag brunches. High-volume
+      event calendar.
+
+  - name: Midnight Sun
+    url: https://www.eventbrite.com/o/midnight-sun-48958324993
+    category: bar_nightclub
+    source_type: eventbrite_organizer
+    address: 4067 18th Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Longstanding LGBTQ+ entertainment bar. Hosts drag shows,
+      karaoke nights, and themed parties.
+
+  - name: The Café
+    url: https://www.eventbrite.com/e/the-cafe-presents-electric-playground-fridays-w-dj-adamusic-424-9pm-2am-tickets-1986489322037?aff=oddtdtcreator#organizer-card
+    category: bar_nightclub
+    source_type: eventbrite_single_event
+    address: 2369 Market Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Largest dance venue in the Castro (~500 capacity). 21+. DJ
+      nights and fundraisers. ADA accessible, gender-neutral
+      bathrooms. URL points to a single event — follow organizer
+      link for full calendar.
+
+  - name: Rikki's Bar
+    url: https://luma.com/rikkisbarsf
+    category: bar_venue
+    source_type: event_listing
+    address: 2223 Market Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      San Francisco's women's sports bar. Community events and
+      fundraisers. LGBTQ+ programming including watch parties.
+      Events listed via Luma platform.
+
+  # ── Arts & Culture ───────────────────────────────────────────────
+
+  - name: GLBT Historical Society
+    url: https://www.glbthistory.org/events-1
+    category: community_org
+    source_type: event_listing
+    address: 4127 18th Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Founded 1985. Non-profit museum and archives preserving
+      LGBTQ+ history. Hosts author talks, panel discussions, film
+      screenings, and archival presentations.
+
+  - name: KnK Contemporary
+    url: https://knkcontemporary.com/event-page
+    category: arts_gallery
+    source_type: event_listing
+    address: 1049 Sutter Street, San Francisco, CA 94109
+    neighborhood: Lower Nob Hill
+    notes: >
+      Art gallery and event venue. Hosts comedy drawing events,
+      adult art classes (Sip & Paint), and exhibitions. Outside the
+      Castro core but serves the community.
+
+  # ── Community & Retail ───────────────────────────────────────────
+
+  - name: The Love Potion Library
+    url: https://www.thelovepotionlibrary.com/#events
+    category: community_retail
+    source_type: event_listing
+    address: 284 Noe Street, San Francisco, CA 94114
+    neighborhood: Castro
+    notes: >
+      Romance bookstore, tea room, and wine bar. Hosts book clubs,
+      tastings, and speed dating events.
+
+  - name: Castro Farmers' Market
+    url: https://www.pcfma.org/castro
+    category: market
+    source_type: event_listing
+    address: 270 Noe Street, San Francisco, CA 94114
+    neighborhood: Castro
+    schedule: Wednesdays 3–7 PM, April–November
+    notes: >
+      Operated by Pacific Coast Farmers' Market Association (PCFMA).
+      20+ vendors. Accepts CalFresh/EBT/WIC. Runs in partnership
+      with Castro Merchants Association.
+
+  # ── Municipal ────────────────────────────────────────────────────
+
+  - name: SF Rec & Park — Castro Activities
+    url: https://anc.apm.activecommunities.com/sfrecpark/activity/search?activity_select_param=2&site_ids=48&viewMode=list
+    category: municipal
+    source_type: activity_portal
+    address: ~
+    neighborhood: Castro
+    notes: >
+      San Francisco Recreation and Park Department registration
+      portal filtered to Castro-area facility (site_id 48). Sports,
+      aquatics, arts, camps, and fitness classes.
