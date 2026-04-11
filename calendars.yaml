@@ -107,16 +107,14 @@ sources:
       karaoke nights, and themed parties.
 
   - name: The Café
-    url: https://www.eventbrite.com/e/the-cafe-presents-electric-playground-fridays-w-dj-adamusic-424-9pm-2am-tickets-1986489322037?aff=oddtdtcreator#organizer-card
+    url: https://www.eventbrite.com/o/119732524561
     category: bar_nightclub
     source_type: eventbrite_single_event
     address: 2369 Market Street, San Francisco, CA 94114
     neighborhood: Castro
     notes: >
       Largest dance venue in the Castro (~500 capacity). 21+. DJ
-      nights and fundraisers. ADA accessible, gender-neutral
-      bathrooms. URL points to a single event — follow organizer
-      link for full calendar.
+      nights and fundraisers.
 
   - name: Rikki's Bar
     url: https://luma.com/rikkisbarsf
