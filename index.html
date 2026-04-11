@@ -29,13 +29,13 @@
     .k-foot { display: flex; flex-direction: column; gap: 4px; }
     .k-time { font-size: clamp(0.8rem, 1.1vw, 1.05rem); font-weight: 600; color: #ddd; }
     .k-detail { font-size: clamp(0.6rem, 0.75vw, 0.78rem); color: #4a4a4a; }
-    .pitch { grid-column: 4; grid-row: 1; background: #1c1c1c; color: #ebebeb; justify-content: space-between; }
+    .rupaul { grid-column: 4; grid-row: 1; background: #1c1c1c; color: #ebebeb; justify-content: space-between; }
     .label { font-size: clamp(8px, 0.65vw, 11px); text-transform: uppercase; letter-spacing: 0.1em; color: #555; }
-    .pitch-mid { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
-    .pitch-title { font-size: clamp(1.4rem, 2.8vw, 2.6rem); font-weight: 800; line-height: 1; color: #fff; }
-    .pitch-sub { font-size: clamp(0.62rem, 0.8vw, 0.8rem); text-transform: uppercase; letter-spacing: 0.12em; color: #555; }
-    .pitch-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #888; line-height: 1.45; margin-top: 4px; }
-    .pitch-time { font-size: clamp(0.68rem, 0.9vw, 0.88rem); font-weight: 600; color: #ccc; }
+    .rp-mid { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+    .rp-title { font-size: clamp(1.4rem, 2.8vw, 2.6rem); font-weight: 800; line-height: 1; color: #fff; }
+    .rp-sub { font-size: clamp(0.62rem, 0.8vw, 0.8rem); text-transform: uppercase; letter-spacing: 0.12em; color: #555; }
+    .rp-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #888; line-height: 1.45; margin-top: 4px; }
+    .rp-time { font-size: clamp(0.68rem, 0.9vw, 0.88rem); font-weight: 600; color: #ccc; }
     .jack { grid-column: 4; grid-row: 2; background: #eaeaea; color: #111; justify-content: space-between; }
     .jack-top { display: flex; justify-content: space-between; align-items: baseline; }
     .jack-price { font-size: clamp(1.1rem, 1.8vw, 1.7rem); font-weight: 800; color: #111; }
@@ -47,38 +47,34 @@
     .jack-foot { display: flex; justify-content: space-between; align-items: flex-end; }
     .jack-venue { font-size: clamp(0.68rem, 0.9vw, 0.88rem); font-weight: 600; color: #333; }
     .jack-time { font-size: clamp(0.58rem, 0.72vw, 0.75rem); color: #888; }
-    .rupaul { grid-column: 1 / 3; grid-row: 3; background: #606060; color: #fff; justify-content: space-between; }
+    .vocalaf { grid-column: 1 / 3; grid-row: 3; background: #f4f4f4; color: #222; justify-content: space-between; }
     .label-light { font-size: clamp(8px, 0.65vw, 11px); text-transform: uppercase; letter-spacing: 0.1em; color: #aaa; }
-    .rp-mid { flex: 1; display: flex; align-items: center; }
-    .rp-title { font-size: clamp(1.8rem, 4.5vw, 4.5rem); font-weight: 800; line-height: 0.95; color: #fff; letter-spacing: -0.02em; }
-    .rp-foot { display: flex; justify-content: space-between; align-items: flex-end; }
-    .rp-time { font-size: clamp(0.68rem, 0.9vw, 0.9rem); font-weight: 600; color: #eee; }
-    .rp-note { font-size: clamp(0.58rem, 0.72vw, 0.75rem); color: #aaa; font-style: italic; }
-    .queeraf { grid-column: 3; grid-row: 3; background: #f4f4f4; color: #222; justify-content: space-between; }
-    .qa-title { font-size: clamp(1rem, 1.8vw, 1.7rem); font-weight: 700; color: #111; }
-    .qa-sub { font-size: clamp(0.58rem, 0.7vw, 0.72rem); text-transform: uppercase; letter-spacing: 0.12em; color: #aaa; }
-    .qa-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #777; line-height: 1.45; flex: 1; padding-top: 6px; }
-    .qa-time { font-size: clamp(0.65rem, 0.85vw, 0.85rem); font-weight: 600; color: #444; }
-    .vocalaf { grid-column: 4; grid-row: 3; background: #cecece; color: #222; justify-content: space-between; }
-    .va-title { font-size: clamp(1rem, 1.8vw, 1.7rem); font-weight: 700; color: #111; }
-    .va-sub { font-size: clamp(0.58rem, 0.7vw, 0.72rem); text-transform: uppercase; letter-spacing: 0.12em; color: #888; }
-    .va-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #666; line-height: 1.45; flex: 1; padding-top: 6px; }
-    .va-time { font-size: clamp(0.65rem, 0.85vw, 0.85rem); font-weight: 600; color: #444; }
+    .va-mid { flex: 1; display: flex; align-items: center; }
+    .va-title { font-size: clamp(1.8rem, 4.5vw, 4.5rem); font-weight: 800; line-height: 0.95; color: #111; letter-spacing: -0.02em; }
+    .va-foot { display: flex; justify-content: space-between; align-items: flex-end; }
+    .va-time { font-size: clamp(0.68rem, 0.9vw, 0.9rem); font-weight: 600; color: #444; }
+    .va-note { font-size: clamp(0.58rem, 0.72vw, 0.75rem); color: #888; font-style: italic; }
+    .brunch { grid-column: 3 / 5; grid-row: 3; background: #606060; color: #fff; justify-content: space-between; }
+    .br-mid { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 5px; }
+    .br-title { font-size: clamp(1.2rem, 2.2vw, 2.2rem); font-weight: 800; line-height: 1; color: #fff; }
+    .br-sub { font-size: clamp(0.62rem, 0.8vw, 0.8rem); text-transform: uppercase; letter-spacing: 0.12em; color: #aaa; }
+    .br-desc { font-size: clamp(0.6rem, 0.78vw, 0.78rem); color: #bbb; line-height: 1.45; margin-top: 4px; }
+    .br-time { font-size: clamp(0.68rem, 0.9vw, 0.88rem); font-weight: 600; color: #eee; }
     @media (max-width: 768px) {
-      .grid { grid-template-columns: repeat(2, 1fr); grid-template-rows: 35fr 25fr 20fr 20fr; }
-      .kasablanca { grid-column: 1 / 3; grid-row: 1; }
+      .grid { grid-template-columns: 1fr; grid-template-rows: 2fr 1fr 1fr 1fr 1fr; height: 100vh; }
+      .kasablanca { grid-column: 1; grid-row: 1; }
       .k-title { font-size: clamp(2.2rem, 9vw, 3.5rem); }
       .k-desc { display: none; }
-      .pitch { grid-column: 1; grid-row: 2; }
-      .pitch-desc { display: none; }
-      .pitch-title { font-size: clamp(1.3rem, 6vw, 2rem); }
-      .jack { grid-column: 2; grid-row: 2; }
+      .vocalaf { grid-column: 1; grid-row: 2; }
+      .va-title { font-size: clamp(1.4rem, 7vw, 2.5rem); }
+      .rupaul { grid-column: 1; grid-row: 3; }
+      .rp-title { font-size: clamp(1.3rem, 6vw, 2rem); }
+      .rp-desc { display: none; }
+      .jack { grid-column: 1; grid-row: 4; }
       .jack-name { font-size: clamp(1.2rem, 5.5vw, 2rem); }
       .jack-note { display: none; }
-      .rupaul { grid-column: 1 / 3; grid-row: 3; }
-      .rp-title { font-size: clamp(1.6rem, 7vw, 3rem); }
-      .queeraf { grid-column: 1; grid-row: 4; }
-      .vocalaf { grid-column: 2; grid-row: 4; }
+      .brunch { grid-column: 1; grid-row: 5; }
+      .br-desc { display: none; }
     }
   </style>
 </head>
@@ -95,26 +91,26 @@
       <div class="k-center">
         <p class="k-tour">360 Experience Tour</p>
         <h1 class="k-title">Kasablanca</h1>
-        <p class="k-desc">Toronto-based melodic techno duo performs their immersive "360 Concert Experience in Higher Resolution" — the audience surrounds their analog station for a retro-futuristic show. Support from Joel Demoor.</p>
+        <p class="k-desc">An immersive 360-degree concert experience from the Canadian electronic duo known for their futuristic blend of progressive house, techno, and new wave. Signed to Anjunabeats, their debut album Higher Resolution comes alive as a fully immersive audiovisual environment inside the historic Castro Theatre.</p>
       </div>
       <div class="k-foot">
-        <span class="k-time">7:00 – 10:00 PM</span>
-        <span class="k-detail">Doors 7 PM &nbsp;·&nbsp; Show 8 PM &nbsp;·&nbsp; Tickets via Ticketmaster</span>
+        <span class="k-time">Doors 7 PM · Show 8 PM</span>
+        <span class="k-detail">Late night · Tickets via Ticketmaster</span>
       </div>
     </a>
 
-    <!-- Pitch A Friend — second-most featured, unique social event -->
-    <a class="tile pitch" href="https://www.academy-sf.com/event-details/pitch-a-friend-singles-night" target="_blank" rel="noopener">
-      <div class="pitch-top">
-        <span class="label">The Academy SF &nbsp;·&nbsp; 2166 Market St</span>
+    <!-- RuPaul's Drag Race S18 Viewing Party -->
+    <a class="tile rupaul" href="https://www.eventbrite.com/e/rupauls-drag-race-viewing-party-at-beaux-in-the-castro-tickets-1980048185424" target="_blank" rel="noopener">
+      <div class="rp-top">
+        <span class="label">Beaux · 2344 Market St</span>
       </div>
-      <div class="pitch-mid">
-        <h2 class="pitch-title">Pitch A<br>Friend</h2>
-        <p class="pitch-sub">Singles Night</p>
-        <p class="pitch-desc">Friends give creative presentations pitching amazing singles to the crowd — part speed dating, part roast, surprisingly wholesome. Mingling and games follow in a moody speakeasy setting. Spots are limited.</p>
+      <div class="rp-mid">
+        <h2 class="rp-title">Drag Race<br>S18</h2>
+        <p class="rp-sub">Viewing Party</p>
+        <p class="rp-desc">Weekly Friday viewing hosted by Melanie Sparks &amp; Hera Wynn. BOGO drinks until 7 PM. Naomi Smalls at the finale April 17.</p>
       </div>
-      <div class="pitch-foot">
-        <span class="pitch-time">6:00 – 9:00 PM</span>
+      <div class="rp-foot">
+        <span class="rp-time">Doors 6 PM · Show 8 PM</span>
       </div>
     </a>
 
@@ -126,43 +122,42 @@
       </div>
       <div class="jack-mid">
         <h2 class="jack-name">Jack Murnin</h2>
-        <p class="jack-genre">R&amp;B &nbsp;·&nbsp; Pop &nbsp;·&nbsp; Indie</p>
+        <p class="jack-genre">R&amp;B · Pop · Indie</p>
         <p class="jack-note">First-ever U.S. headline run</p>
       </div>
       <div class="jack-foot">
         <span class="jack-venue">Cafe du Nord</span>
-        <span class="jack-time">8:45 – 10:45 PM</span>
+        <span class="jack-time">8:45 PM · 2174 Market St</span>
       </div>
     </a>
 
-    <!-- RuPaul's Drag Race — popular weekly community event -->
-    <a class="tile rupaul" href="https://www.eventbrite.com/e/rupauls-drag-race-viewing-party-at-beaux-in-the-castro-tickets-1980048185424" target="_blank" rel="noopener">
-      <div class="rp-top">
-        <span class="label-light">Viewing Party &nbsp;·&nbsp; Beaux &nbsp;·&nbsp; 2344 Market St</span>
+    <!-- Vocal AF — community open mic at Harvey Milk's former camera shop -->
+    <a class="tile vocalaf" href="https://www.eventbrite.com/e/vocal-af-tickets-578322416917" target="_blank" rel="noopener">
+      <div class="va-top">
+        <span class="label-light">Open Mic · 575 Castro St · Harvey Milk's Former Camera Shop</span>
       </div>
-      <div class="rp-mid">
-        <h2 class="rp-title">RuPaul's<br>Drag Race</h2>
+      <div class="va-mid">
+        <h2 class="va-title">Vocal AF</h2>
       </div>
-      <div class="rp-foot">
-        <span class="rp-time">6:00 – 9:00 PM</span>
-        <span class="rp-note">Castro staple</span>
+      <div class="va-foot">
+        <span class="va-time">Evening</span>
+        <span class="va-note">Hosted by House Ganuush</span>
       </div>
     </a>
 
-    <!-- Queer A.F. Open — free drop-in community space -->
-    <a class="tile queeraf" href="https://queer-af.com" target="_blank" rel="noopener">
-      <h3 class="qa-title">Queer A.F.</h3>
-      <p class="qa-sub">Community Space</p>
-      <p class="qa-desc">Free drop-in at their Castro location. An open, welcoming space for the LGBTQ+ community.</p>
-      <span class="qa-time">12:00 – 7:00 PM</span>
-    </a>
-
-    <!-- Vocal AF — community open mic, also hosted by Queer A.F. -->
-    <a class="tile vocalaf" href="https://queer-af.com" target="_blank" rel="noopener">
-      <h3 class="va-title">Vocal AF</h3>
-      <p class="va-sub">Open Mic Night</p>
-      <p class="va-desc">Celebrating diverse voices in the Castro. Hosted by Queer A.F.</p>
-      <span class="va-time">7:00 – 10:00 PM</span>
+    <!-- Weekend Drag Brunches @ Beaux -->
+    <a class="tile brunch" href="https://www.eventbrite.com/e/weekend-drag-brunches-beaux-in-the-castro-tickets-827581999037" target="_blank" rel="noopener">
+      <div class="br-top">
+        <span class="label-light">Saturday · Beaux · 2344 Market St</span>
+      </div>
+      <div class="br-mid">
+        <h2 class="br-title">Weekend Drag Brunches</h2>
+        <p class="br-sub">Two Seatings</p>
+        <p class="br-desc">Drag queens, DJs, champagne, mimosas, and taqueria brunch by Taco Boys. Reservations recommended for parties of 3+.</p>
+      </div>
+      <div class="br-foot">
+        <span class="br-time">12:30 PM &amp; 2:30 PM</span>
+      </div>
     </a>
 
   </div>
